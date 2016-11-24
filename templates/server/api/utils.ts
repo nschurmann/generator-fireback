@@ -1,5 +1,12 @@
 import * as _ from 'lodash'
 import * as express from 'express'
+import { IUser } from './user/user.model'
+
+export interface IRequest extends express.Request {
+  user: IUser
+  body: any
+  params: any
+}
 
 export const respondWithResult = (res: express.Response, statusCode: number = 200) =>
   (entity: any) =>

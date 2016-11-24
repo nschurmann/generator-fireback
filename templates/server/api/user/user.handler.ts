@@ -1,26 +1,26 @@
 import * as express from 'express'
 import User from './user.model'
-import { respondWithResult, handleError, handleEntityNotFound, saveUpdates, removeEntity } from '../utils'
+import { respondWithResult, handleError, handleEntityNotFound, saveUpdates, removeEntity, IRequest } from '../utils'
 
 // Gets user profile
-export const me = (req: express.Request, res: express.Response) =>
+export const me = (req: IRequest, res: express.Response) =>
   respondWithResult(res, 200)(req.user)
 
-export const updateMe = (req: express.Request, res: express.Response) => {
+export const updateMe = (req: IRequest, res: express.Response) => {
   if (req.body.role) delete req.body.role;
-  (<any>req.params).id = req.user._id
+  req.params.id = req.user._id
   update(req, res)
 }
 
 // Gets a list of Users
-export const index = (req: express.Request, res: express.Response) => {
+export const index = (req: IRequest, res: express.Response) => {
   return User.find({}).exec()
     .then(respondWithResult(res, 200))
     .catch(handleError(res))
 }
 
 // Gets a single User from the DB
-export function show(req: express.Request & {params: any}, res: express.Response) {
+export function show(req: IRequest, res: express.Response) {
   return User.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res, 200))
@@ -28,7 +28,7 @@ export function show(req: express.Request & {params: any}, res: express.Response
 }
 
 // Updates an existing User in the DB
-export function update(req: express.Request & {params: any}, res: express.Response) {
+export function update(req: IRequest, res: express.Response) {
   if (req.body._id) {
     delete req.body._id
   }
@@ -40,7 +40,7 @@ export function update(req: express.Request & {params: any}, res: express.Respon
 }
 
 // Deletes a User from the DB
-export function destroy(req: express.Request & {params: any}, res: express.Response) {
+export function destroy(req: IRequest, res: express.Response) {
   return User.findById(req.params.id).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))

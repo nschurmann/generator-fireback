@@ -1,12 +1,12 @@
 import * as express from 'express'
-var passport = require('passport')
+const passport = require('passport')
 import config from '../config/environment'
-var jwt = require('jsonwebtoken')
-var expressJwt = require('express-jwt')
-var compose = require('composable-middleware')
-import {Model as User} from '../api/user/user.model'
+const jwt = require('jsonwebtoken')
+const expressJwt = require('express-jwt')
+const compose = require('composable-middleware')
+import User from '../api/user/user.model'
 
-var validateJwt = expressJwt({
+const validateJwt = expressJwt({
   secret: config.secrets.session
 })
 

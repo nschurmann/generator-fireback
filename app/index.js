@@ -11,7 +11,7 @@ module.exports = generators.Base.extend({
     })
   },
   writing: function() {
-    console.log(this.answers)
+    // console.log(this.answers)
     this.destinationRoot(`${this.destinationPath(this.answers.appName)}`)
     const transpilerTemplates = require('./transpiler')(this.answers)
     transpilerTemplates.map(x => {

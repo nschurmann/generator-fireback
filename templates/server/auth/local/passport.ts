@@ -1,8 +1,7 @@
 const passport = require('passport')
 const LocalStrategy = require('passport-local').Strategy
-import { IUser } from '../../api/user/user.model'
 
-function localAuthenticate(User: IUser, email: string, password: string, done: Function) {
+function localAuthenticate(User: any, email: string, password: string, done: Function) {
   User.findOne({
     email: email.toLowerCase().trim()
   })
@@ -30,7 +29,7 @@ function localAuthenticate(User: IUser, email: string, password: string, done: F
     })
 }
 
-export const setup = function(User: IUser, config: any) {
+export const setup = function(User: any, config: any) {
   passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password' // this is the virtual field on the model

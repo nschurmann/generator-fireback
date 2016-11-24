@@ -13,8 +13,6 @@ const passport = require('passport')
 export = function(app: any) {
   var env = app.get('env')
 
-  app.set('views', config.root + '/server/views')
-  app.set('view engine', 'pug')
   app.use(compression())
   app.use(bodyParser.urlencoded({ extended: false }))
   app.use(bodyParser.json())

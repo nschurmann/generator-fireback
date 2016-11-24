@@ -1,7 +1,8 @@
 import express = require('express')
+import http = require('http')
 import mongoose = require('mongoose')
 import config from './config/environment'
-import http = require('http')
+
 
 // Connect to MongoDB
 mongoose.connect(config.mongo.uri, config.mongo.options)

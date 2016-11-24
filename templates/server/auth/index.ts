@@ -1,7 +1,7 @@
 import * as express from 'express'
 var passport = require('passport')
 var config = require('../config/environment')
-import { Model as User } from '../api/user/user.model'
+import User from '../api/user/user.model'
 import local from './local'
 
 // Passport Configuration

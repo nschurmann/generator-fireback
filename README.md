@@ -3,22 +3,27 @@ Fireback is a web framework to build fast and easy large node.js based applicati
 It's designed to use REST or GraphQL API on the backend and offers React and plain JS on the frontend. It can be used
 as an API to be consumed by a mobile app.
 Fireback supports multiple oauth strategies and let's you generate boilerplate code easily.
-Works with MongoDB or MySQL. It let you add quickly new endpoints or new data models to your GraphQL API.
+Works with MongoDB. It let you add quickly new endpoints or new data models to your GraphQL API.
 
 ##Work in progress
-Fireback is a work in progress and will support:
-- Project:
-- [x] Create a project
-- [ ] Customize project creation
-- GraphQL:
-- [ ] Add data models (type attribute names and select types, instantly making it available through the API)
-- REST:
-- [ ] Add endpoints
-- [ ] Add Models (type attribute names and select types)
-- ReactJS:
-- [ ] Create component
-- [ ] Create actions (will add a reducer)
-- [ ] Add routes
-- [ ] Feature (will add CRUD routes, create actions, add reducers and components) 
+Fireback is a work in progress and support:
+- General:
+  - [x] Create a project
+  - [ ] Use bootstrap (recomendations are accepted)
+- Backend:
+  - [x] Typescript
+  - [ ] Javascript (Babel)
+  - [x] RESTful API
+  - [ ] GraphQL API
+  - [ ] Add REST endpoint (Command)
+  - [ ] Add GraphQL data-model (Command)
+  - [x] Facebook oauth
+  - [ ] Twitter oauth
+  - [ ] Google oauth
+- Frontend (ReactJS):
+  - [ ] Create component
+  - [ ] Create actions (will add a reducer)
+  - [ ] Add routes
+  - [ ] Generate feature (will add CRUD routes, create actions, reducers and components) 
 - Admin:
-- [ ] Create entity (CRUD over a model and ReactJS feature)
+  - [ ] Create CRUD (Generate REST endpoint with model or GraphQL data-model, routes, views, reducers, actions and components for CRUD actions)

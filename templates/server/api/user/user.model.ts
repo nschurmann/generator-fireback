@@ -1,7 +1,6 @@
-import crypto = require('crypto')
-import mongoose = require('mongoose')
-mongoose.Promise = require('bluebird')
-import {Schema} from 'mongoose'
+const crypto = require('crypto')
+import * as mongoose from 'mongoose'
+const { Schema } = mongoose
 
 const authTypes = ['local']
 
@@ -44,7 +43,7 @@ UserSchema
   .get(() => {
     return {
       'name': this.name,
-      'role': this.role
+      'role': this.role,
     }
   })
 
@@ -93,7 +92,7 @@ UserSchema
     }
 
     // Make salt with a callback
-    this.makeSalt((saltErr: any, salt: string) => {
+    this.makeSalt((saltErr: any, salt: any) => {
       if (saltErr) {
         return next(saltErr)
       }
@@ -164,7 +163,7 @@ UserSchema.methods = {
       return crypto.randomBytes(byteSize).toString('base64')
     }
 
-    return crypto.randomBytes(byteSize, (err, salt) => {
+    return crypto.randomBytes(byteSize, (err: any, salt: any) => {
       if (err) {
         callback(err)
       } else {
@@ -199,7 +198,7 @@ UserSchema.methods = {
         .toString('base64')
     }
 
-    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, 'sha512', (err, key) => {
+    return crypto.pbkdf2(password, salt, defaultIterations, defaultKeyLength, 'sha512', (err: any, key: any) => {
       if (err) {
         callback(err)
       } else {
