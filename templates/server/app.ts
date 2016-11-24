@@ -1,10 +1,12 @@
 import express = require('express')
 import http = require('http')
 import mongoose = require('mongoose')
+import Promise = require('bluebird')
 import config from './config/environment'
 
 
 // Connect to MongoDB
+mongoose.Promise = Promise
 mongoose.connect(config.mongo.uri, config.mongo.options)
 mongoose.connection.on('error', (err: any) => {
   console.error('MongoDB connection error: ' + err)

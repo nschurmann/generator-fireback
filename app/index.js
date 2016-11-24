@@ -1,5 +1,7 @@
 const generators = require('yeoman-generator')
 const prompts = require('./prompts')
+const glob = require('glob')
+const path = require('path')
 
 module.exports = generators.Base.extend({
   constructor: function() {
@@ -11,16 +13,20 @@ module.exports = generators.Base.extend({
     })
   },
   writing: function() {
-    // console.log(this.answers)
-    this.destinationRoot(`${this.destinationPath(this.answers.appName)}`)
-    const transpilerTemplates = require('./transpiler')(this.answers)
-    transpilerTemplates.map(x => {
-      this.fs.copyTpl(
-        this.templatePath(x.template),
-        this.destinationPath(x.destination),
-        x.data
-      )
-    })
+    copyTemplates(this)
     this.npmInstall()
   }
-});
+})
+
+const copyTemplates = (generator) => {
+  generator.destinationRoot(`${generator.destinationPath(generator.answers.appName)}`)
+  const root = generator.templatePath('../../templates')
+  const files = glob.sync('**', { dot: true, nodir: true, cwd: root })
+  for (let i in files) {
+    generator.fs.copyTpl(
+      generator.templatePath(`../../templates/${files[i]}`),
+      generator.destinationPath(files[i]),
+      generator.answers
+    )
+  }
+}

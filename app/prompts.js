@@ -4,6 +4,11 @@ module.exports = [{
   message: 'Type the name of your application',
   default: 'MyApp',
 }, {
+  type: 'options',
+  name: 'email',
+  message: 'Please enter your email',
+  default: 'myemail@email.com',
+}, {
   type: 'list',
   name: 'frontend',
   message: 'Select your Frontend tools',
