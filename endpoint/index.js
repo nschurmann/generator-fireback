@@ -38,7 +38,7 @@ class Generator extends Base {
     const types = this.answers.filter(x => x.type)
     const answers = _.zipWith(fields, types,
       (x, y) => ({ field: x.field, type: y.type }))
-    console.log(model, answers) // yay!!!, we have everything paired :)
+    
   }
 
   writing() {

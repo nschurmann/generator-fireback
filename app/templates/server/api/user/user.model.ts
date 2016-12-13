@@ -20,11 +20,11 @@ const UserSchema = new Schema({
   email: {
     type: String,
     lowercase: true,
-    required: true
+    required: true,
   },
   role: {
     type: String,
-    default: 'user'
+    default: 'user',
   },
   password: {
     type: String,

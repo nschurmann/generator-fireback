@@ -11,11 +11,11 @@ const path = require('path')
  */
 const copyTemplates = (generator) => {
   generator.destinationRoot(`${generator.destinationPath(generator.answers.appName)}`)
-  const root = generator.templatePath('../../templates')
+  const root = generator.templatePath()
   const files = glob.sync('**', { dot: true, nodir: true, cwd: root })
   for (let i in files) {
     generator.fs.copyTpl(
-      generator.templatePath(`../../templates/${files[i]}`),
+      generator.templatePath(`./${files[i]}`),
       generator.destinationPath(files[i]),
       generator.answers
     )
