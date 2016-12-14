@@ -1,7 +1,24 @@
-const path = require('path')
 const { Base } = require('yeoman-generator')
 const _ = require('lodash')
 const prompts = require('./prompts')
+const glob = require('glob')
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+const copyTemplates = (generator) => {
+  const _path = `server/api/${generator.answers.model}`
+  generator.destinationRoot(`${generator.destinationPath(_path)}`)
+  const root = generator.templatePath()
+  const files = glob.sync('**', { dot: true, nodir: true, cwd: root })
+  console.log(Object.assign({}, generator.answers, {modelCapitalized: String(generator.answers.model).capitalizeFirstLetter()}))
+  for (let i in files) {
+    generator.fs.copyTpl(
+      generator.templatePath(`./${files[i]}`),
+      generator.destinationPath(`${generator.answers.model}.${files[i]}`),
+      Object.assign({}, generator.answers, {modelCapitalized: String(generator.answers.model).capitalizeFirstLetter()})
+    )
+  }
+}
 
 class Generator extends Base {
   constructor(...args) {
@@ -38,11 +55,14 @@ class Generator extends Base {
     const types = this.answers.filter(x => x.type)
     const answers = _.zipWith(fields, types,
       (x, y) => ({ field: x.field, type: y.type }))
-    
+    this.answers = {
+      model: model.model,
+      answers
+    }
   }
 
   writing() {
-    console.log('ca');
+    copyTemplates(this, `server/api/${this.answers.model}`)
   }
 }
 

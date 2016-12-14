@@ -1,16 +1,9 @@
 const generators = require('yeoman-generator')
 const prompts = require('./prompts')
 const glob = require('glob')
-const path = require('path')
 
-
-/**
- * copyTemplates
- * Helper function to copy and render templates in destination app folder.
- * @param {generator} generator
- */
 const copyTemplates = (generator) => {
-  generator.destinationRoot(`${generator.destinationPath(generator.answers.appName)}`)
+  generator.destinationRoot(`${generator.destinationPath(destination)}`)
   const root = generator.templatePath()
   const files = glob.sync('**', { dot: true, nodir: true, cwd: root })
   for (let i in files) {
