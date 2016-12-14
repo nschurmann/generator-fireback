@@ -15,7 +15,7 @@ Fireback is a work in progress and support:
   - [ ] Javascript (Babel)
   - [x] RESTful API
   - [ ] GraphQL API
-  - [ ] Add REST endpoint (Command)
+  - [x] Add REST endpoint (Command)
   - [ ] Add GraphQL data-model (Command)
   - [x] Facebook oauth
   - [ ] Twitter oauth
