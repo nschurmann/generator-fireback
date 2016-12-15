@@ -9,6 +9,7 @@ Works with MongoDB. It let you add quickly new endpoints or new data models to y
 Fireback is a work in progress and support:
 - General:
   - [x] Create a project
+  - [x] The server will watch for file changes
   - [ ] Use bootstrap (recomendations are accepted)
 - Backend:
   - [x] Typescript
