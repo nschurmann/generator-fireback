@@ -3,7 +3,7 @@ const prompts = require('./prompts')
 const glob = require('glob')
 
 const copyTemplates = (generator) => {
-  generator.destinationRoot(`${generator.destinationPath(destination)}`)
+  generator.destinationRoot(`${generator.destinationPath(generator.answers.appName)}`)
   const root = generator.templatePath()
   const files = glob.sync('**', { dot: true, nodir: true, cwd: root })
   for (let i in files) {
