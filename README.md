@@ -10,7 +10,10 @@ Fireback is a work in progress and support:
 - General:
   - [x] Create a project
   - [x] The server will watch for file changes
+  - [x] Implements hotreload
+  - [x] Serve files statically
   - [ ] Use bootstrap (recomendations are accepted)
+  - [ ] Configure Templates (The main intention is to extend an existing template so when you generate a component or admin crud will render with the css classes and HTML structure)
 - Backend:
   - [x] Typescript
   - [ ] Javascript (Babel)
