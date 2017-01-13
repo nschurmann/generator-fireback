@@ -4,11 +4,11 @@ const glob = require('glob')
 
 const copyTemplates = (generator) => {
   generator.destinationRoot(`${generator.destinationPath(generator.answers.appName)}`)
-  const root = generator.templatePath()
+  const root = generator.templatePath() + `/${generator.answers.language}`
   const files = glob.sync('**', { dot: true, nodir: true, cwd: root })
   for (let i in files) {
     generator.fs.copyTpl(
-      generator.templatePath(`./${files[i]}`),
+      generator.templatePath(`./${generator.answers.language}/${files[i]}`),
       generator.destinationPath(files[i]),
       generator.answers
     )
@@ -28,6 +28,7 @@ class Generator extends generators.Base {
 
   writing() {
     copyTemplates(this)
+    return
     this.npmInstall()
   }
 }

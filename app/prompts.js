@@ -8,13 +8,19 @@ module.exports = [{
   name: 'email',
   message: 'Please enter your email',
   default: 'myemail@email.com',
+// }, {
+//   type: 'list',
+//   name: 'frontend',
+//   message: 'Select your Frontend tools',
+//   choices: ['ReactJS + Redux + React Router', 'Plain Javascript'],
+//   filter: (val) =>
+//     val == 'Plain Javascript' ? 'js' : 'react'
 }, {
   type: 'list',
-  name: 'frontend',
-  message: 'Select your Frontend tools',
-  choices: ['ReactJS + Redux + React Router', 'Plain Javascript'],
-  filter: (val) =>
-    val == 'Plain Javascript' ? 'js' : 'react'
+  name: 'language',
+  message: 'Choose your destiny!',
+  choices: ['Javascript', 'Typescript'],
+  filter: x => x.toLowerCase(),
 }, {
   type: 'confirm',
   name: 'bootstrap',
